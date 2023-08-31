@@ -1,0 +1,128 @@
+Week 5 : Programming Assignment 1
+
+
+Write a C program to check whether a given number (N) is a perfect number or not.
+[Perfect Number - A perfect number is a positive integer number which is equals to the sum of its proper positive divisors. 
+For example 6 is a perfect number because its proper divisors are 1, 2, 3 and it’s sum is equals to 6.]
+
+C Program:
+
+#include <stdio.h>
+int main()
+{
+    int N; 
+    scanf("%d",&N); 
+    int sum=0;
+    for(int ik = 1; ik <= N / 2; ik++)
+    {
+       
+        if(N%ik == 0)
+        {
+            sum += ik;
+        }
+    }
+    if(sum == N && N > 0)
+    {
+       printf("%d is a perfect number.",N);
+    }
+    else
+    {
+        printf("%d is not a perfect number.",N);
+    }
+    return 0;
+}
+
+
+
+
+Week 5 : Programming Assignment 2
+
+
+Write a C program to count total number of digits of an Integer number (N).
+
+
+C Program:
+
+#include <stdio.h>
+int main()
+{
+    int N; 
+    scanf("%d",&N);
+    int temp02 = N, count = 0; 
+    while(temp02 > 0)
+	  {
+        count+=1;
+        temp02/=10;
+    }
+    printf("The number %d contains %d digits.",N,count);
+    return 0;
+}    
+
+
+Week 5 : Programming Assignment 3
+
+
+Write a C program to check whether the given number(N) can be expressed as Power of Two (2) or not.
+For example 8 can be expressed as 2^3.
+
+
+#include <stdio.h>
+int main()
+{
+    int N;
+    scanf("%d",&N);
+    int t2, flag;
+    t2=N;
+    flag=0;
+
+    while(t2!=1)
+    {
+        if(t2%2!=0)
+        {
+            flag=1;
+            break;
+        }
+        t2/=2;
+    }
+
+    if(flag==0)
+    {
+        printf("%d is a number that can be expressed as power of 2.",N);
+    }
+    else
+    {
+        printf("%d cannot be expressed as power of 2.",N);
+    }
+    return 0;
+}
+
+
+
+Week 5 : Programming Assignment 4
+
+
+Write a C program to find sum of following series where the value of N is taken as input
+
+
+C Program:
+
+#include<stdio.h>
+int main()
+{
+    int N;
+    float sum = 0.0;
+    scanf("%d",&N);
+    for(int y=1;y <= N;y++)
+    {
+        sum+=1.0/y;
+    }
+    printf("Sum of the series is: %.2f",sum);
+    return 0;
+} 
+
+
+
+
+
+
+
