@@ -1,0 +1,197 @@
+-----------------------------------------------------------------------------------------------------------------------------
+Week 7 : Programming Assignment 1
+-----------------------------------------------------------------------------------------------------------------------------
+
+Write a C Program to Count Number of Uppercase and Lowercase Letters in a given string. The given 
+string may be a word or a sentence.
+
+
+C Program :
+
+#include<stdio.h>
+int main() {
+   int upper = 0, lower = 0;
+   char ch[100];
+   scanf(" %[^\n]s", ch); 
+   int vip = 0;
+   while (ch[vip] != '\0') 
+   {
+   	if (ch[vip] >= 65 && ch[vip] <= 90)
+	        	upper++;
+ 	if (ch[vip] >= 97 && ch[vip] <= 122)
+ 		lower++;
+ 	vip++;
+   }
+   printf("Uppercase Letters : %d\n", upper);	 /*prints number of uppercase letters */
+   printf("Lowercase Letters : %d", lower); 	/*prints number of lowercase letters */
+   return (0);
+}
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+Week 7 : Programming Assignment 2
+-----------------------------------------------------------------------------------------------------------------------------
+
+Write a C program to find the sum of all elements of each row of a matrix.
+
+
+C Program :
+
+#include <stdio.h>
+int main()
+{
+    int matrix[20][20];
+    int i,j,r,c;
+
+    scanf("%d",&r); //Accepts number of rows
+    scanf("%d",&c); //Accepts number of columns 
+
+    for(i=0;i< r;i++) //Accepts the matrix elements from the test case data
+    {
+        for(j=0;j< c;j++)
+        {
+            scanf("%d",&matrix[i][j]); 
+        }
+    }
+    int sum;
+    for(i = 0;i < r;i++)
+    {
+      for(j = 0,sum = 0;j < c;j++)
+      {
+        sum += matrix[i][j];
+      }
+      printf("%d\n",sum);
+    }
+    return 0;
+}
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+Week 7 : Programming Assignment 3
+-----------------------------------------------------------------------------------------------------------------------------
+
+Write a C program to find subtraction of two matrices i.e. matrix_A - matrix_B=matrix_C.
+ 
+
+C Program :
+
+#include <stdio.h>
+int main()
+{
+    int matrix_A[20][20], matrix_B[20][20], matrix_C[20][20];
+    int i,j,row,col;
+    scanf("%d",&row); //Accepts number of rows
+    scanf("%d",&col); //Accepts number of columns 
+    for(i=0; i<row; i++)
+    {
+        for(j=0; j<col; j++)
+        {
+            scanf("%d", &matrix_A[i][j]);
+        }
+    }
+    for(i=0; i<row; i++)
+    {
+        for(j=0; j<col; j++)
+        {
+            scanf("%d", &matrix_B[i][j]);
+        }
+    }
+
+    for(i = 0;i < row;i++)
+    {
+      for(j = 0;j < col;j++)
+      {
+        matrix_C[i][j] = matrix_A[i][j] - matrix_B[i][j];
+        printf("%d ", matrix_C[i][j]);
+      }
+      printf("\n");
+    }
+    return 0;
+}
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+Week 7 : Programming Assignment 4
+-----------------------------------------------------------------------------------------------------------------------------
+Write a C program to print Largest and Smallest Word from a given sentence. If there are two or more 
+words of same length, then the first one is considered. A single letter in the sentence is also consider 
+as a word.
+
+C Program :
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char str[100]={0},substr[100][100]={0}; 
+    scanf("%[^\n]s", str); //Accepts the sentence from the test case data.
+    int count = 0,data[10],index = 0,max = 0,min = 100,maxindex,minindex;
+    for(int i =0;i < strlen(str);i++)
+    {
+    	if(str[i] != '\0' && str[i] != ' ' && str[i] != '.')
+      	{
+        		count++;
+      	}
+      	else
+      	{
+        		data[index++] = count;
+	             count = 0;
+      	}
+    }
+    for(int i =0;i < index;i++)
+    {
+      	if(data[i] > max)
+      	{
+	        max = data[i];
+	        maxindex = i;
+      	}
+      	if(data[i] < min)
+      	{
+	        min = data[i];
+	        minindex = i;
+      	}      
+    }
+    count = 0;
+    printf("Largest Word is:");
+    for(int i = 0;i < strlen(str);i++)
+    {
+     	if(str[i] == ' ')
+      	{
+        		count++;
+      	}
+             if(count == maxindex)
+       	{
+         		printf("%c",str[i]);
+      	}
+    }
+    printf("\nSmallest word is:");
+    count = 0;
+    for(int i = 0;i < strlen(str);i++)
+    {
+      	if(str[i] == ' ')
+      	{
+        		count++;
+      	}
+      	if(count == minindex && str[i] != '.')
+      	{
+         		printf("%c",str[i]);
+      	}
+    }
+    return 0;
+}
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
