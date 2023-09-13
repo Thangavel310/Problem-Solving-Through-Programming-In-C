@@ -1,0 +1,146 @@
+-----------------------------------------------------------------------------------------------------------------------------
+Week 8 : Programming Assignment 1
+-----------------------------------------------------------------------------------------------------------------------------
+
+Write a C Program to find HCF of 4 given numbers using recursive function
+
+
+C Program :
+
+#include<stdio.h>
+int HCF(int, int); 
+
+int main()
+{
+   int a, b, c, d, result;
+   scanf("%d %d %d %d", &a, &b, &c, &d);
+   result = HCF(HCF(a, b), HCF(c,d));
+   printf("The HCF is %d", result);
+}
+
+int HCF(int n1, int n2) 
+{
+    while(n1 != n2)
+    {
+      if(n1 > n2)
+      {
+        return HCF(n1-n2,n2);
+      }
+      else
+      {
+        return HCF(n1,n2-n1);
+      }
+    }
+}
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+Week 8 : Programming Assignment 2
+-----------------------------------------------------------------------------------------------------------------------------
+
+Write a C Program to find power of a given number using recursion. The number and the power to 
+be calculated is taken from test case
+
+
+
+C Program :
+
+
+#include <stdio.h>  
+long power(int, int);
+int main()
+{
+	int pow, num;
+	long result;
+	scanf("%d", &num); 
+	scanf("%d", &pow); 
+	result = power(num, pow);
+	printf("%d^%d is %ld", num, pow, result);
+	return 0;
+}
+long power(int a, int b) 
+{
+    if (b != 0)
+        return (a * power(a, b - 1));
+    else
+        return 1;
+}
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+Week 8 : Programming Assignment 3
+-----------------------------------------------------------------------------------------------------------------------------
+
+Write a C Program to print Binary Equivalent of an Integer using Recursion
+
+ 
+
+C Program :
+
+#include <stdio.h>
+int binary_conversion(int); 
+int main()
+ {
+	int num, bin;
+	scanf("%d", &num); 
+	bin = binary_conversion(num);
+	printf("The binary equivalent of %d is %d\n", num, bin);
+	return 0;
+}
+int binary_conversion(int j)
+{
+	if (j == 0)
+	{
+		return 0;
+	}
+	else
+	{
+		return (j % 2) + 10 * binary_conversion(j / 2);
+	}
+}
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+Week 8 : Programming Assignment 4
+-----------------------------------------------------------------------------------------------------------------------------
+Write a C Program to reverse a given word using function. e.g. INDIA should be printed as AIDNI
+
+
+C Program :
+
+#include<stdio.h>
+#include<string.h>
+
+void reverse(char[], int, int);
+int main()
+{
+        char str1[20];
+        scanf("%s", str1);
+        reverse(str1,0,strlen(str1)-1);
+        printf("The string after reversing is: %s\n", str1); 
+        return 0;
+}
+void reverse(char string[], int initial, int final)
+{
+  while(initial < final)
+  {
+    char dummy = string[initial];
+    string[initial] = string[final];
+    string[final] = dummy;
+    initial++;
+    final--;
+  }
+}
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
