@@ -1,0 +1,191 @@
+-----------------------------------------------------------------------------------------------------------------------------
+WEEK 9 : Programming Assignment 1
+-----------------------------------------------------------------------------------------------------------------------------
+
+Write a program to print all the locations at which a particular element (taken as input) is found in a 
+list and also print the total number of times it occurs in the list. The location starts from 1.
+
+
+C Program :
+
+#include <stdio.h>
+int main()
+{
+	int array[100], search, n, count = 0;
+	scanf("%d", &n);
+	int c;
+	for (c = 0; c < n; c++)      
+		scanf("%d", &array[c]);
+	
+	scanf("%d", &search); 
+	for(c = 0;c < n;c++)
+    	{
+      		if(array[c] == search)
+      		{
+      	  		count++;
+     			printf("%d is present at location %d.\n",search,c+1);   
+      		}
+    	}
+	if(count > 0)
+    	{
+		printf("%d is present %d times in the array.\n",search,count);\
+    	}
+	else
+    	{
+    		printf("%d is not present in the array.\n",search);  
+    	}
+}
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+WEEK 9 : Programming Assignment 2
+-----------------------------------------------------------------------------------------------------------------------------
+
+Write a C program to search a given element from a 1D array and display the position at which it is 
+found by using linear search function. The index location starts from 1.
+
+
+
+C Program :
+
+
+#include <stdio.h>
+int linear_search(int[], int, int);
+int main()
+{
+	int array[100], search, c, n, position;
+	scanf("%d", &n);
+
+	for (c = 0; c < n; c++)
+		scanf("%d", &array[c]); 
+
+	scanf("%d", &search);  
+	position = linear_search(array,n,search);
+	if(position >= 0)
+    	{
+		printf("%d is present at location %d.", search, position+1);
+    	}
+	else
+    	{
+      		printf("%d is not present in the array.", search);
+    	}
+}
+int linear_search(int array[], int n, int search)
+{
+	for(int i = 0;i < n;i++)
+  	{
+		if(array[i] == search)
+    		{
+      			return i;
+    		}
+  	}
+	return -2;
+}
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+WEEK 9 : Programming Assignment 3
+-----------------------------------------------------------------------------------------------------------------------------
+
+Write a C program to search a given number from a sorted 1D array and display the position at which 
+it is found using binary search algorithm. The index location starts from 1.
+
+
+ 
+
+C Program :
+
+#include <stdio.h>
+int main()
+{
+	int c, n, search,array[100];
+	scanf("%d",&n); 
+
+	for (c = 0; c < n; c++)
+		scanf("%d",&array[c]);
+
+	scanf("%d", &search); 
+
+	int mid,high = n-1,low = 0,count = 0;
+L:	mid = low + (high-low)/2;
+	if(array[mid] == search)
+    	{
+		printf("%d found at location %d.", search, mid+1);
+    	}
+	else
+    	{
+      		count++;
+      		if(array[mid] > search)
+      		{
+        			high = mid - 1;
+      		}
+      		else
+      		{
+        			low = mid+1;
+      		}
+      		if(count <= n)
+      		{
+        			goto L;
+      		}
+      		else
+      		{
+       			printf("Not found! %d isn't present in the list.", search); 
+      		}
+    	}
+}
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+WEEK 9 : Programming Assignment 4
+-----------------------------------------------------------------------------------------------------------------------------
+Write a C program to reverse an array by swapping the elements and without using any new array.
+
+
+
+
+C Program :
+
+#include <stdio.h>
+int main() 
+{
+	int array[100], n, c;
+	scanf("%d", &n); 
+	for (c = 0; c < n; c++) 
+	{
+		scanf("%d", &array[c]);
+  	}
+	int temp;
+	for(c = 0;c < n/2;c++)
+    	{
+      		temp = array[c];
+      		array[c] = array[n-c-1];
+      		array[n-c-1] = temp;
+    	}	
+	int temp;
+	for(c = 0;c < n/2;c++)
+    	{
+      		temp = array[c];
+      		array[c] = array[n-c-1];
+      		array[n-c-1] = temp;
+    	}
+
+	printf("Reversed array elements are:\n");
+	for (c = 0; c < n; c++) 
+	{
+    		printf("%d\n", array[c]);
+  	}
+  	return 0;
+}
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
