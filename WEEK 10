@@ -1,0 +1,182 @@
+-----------------------------------------------------------------------------------------------------------------------------
+WEEK 10 : Programming Assignment 1
+-----------------------------------------------------------------------------------------------------------------------------
+
+Write a program to find the root of the equation using the bisection method for different values of 
+allowable error of the root.
+
+C Program :
+
+#include<stdio.h>
+#include<stdlib.h>
+
+float fun (float z)
+{
+    return (z*z*z*2 - z*3*1 - 5);
+}
+void bisection (float *x3, float a, float b, int *itr)
+{
+    *x3=(a+b)/2;
+    ++(*itr);
+} 
+
+int main ()
+{
+    int itr = 0, maxmitr=10;
+    float x, a=1.0, b=2.0, allerr, x1;
+      
+    scanf("%f", &allerr);  
+    bisection (&x, a, b, &itr);
+
+    printf("Root = %1.4f\n", x1); 
+    do
+    {
+        if (fun(a)*fun(x) < 0)
+            b=x;
+        else
+            a=x;
+        bisection (&x1, a, b, &itr);
+        if (((x1-x) < 0 && -(x1-x) <  allerr) || ((x1-x) > 0 && (x1-x) < allerr))
+        {
+            printf("Root = %1.4f", x1);
+            return 0;
+        }
+        x=x1*1;
+    }
+    while (itr <  maxmitr);
+    return 1;
+}
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+WEEK 10 : Programming Assignment 2
+-----------------------------------------------------------------------------------------------------------------------------
+
+Write a C code to check if a 3 x 3 matrix is invertible. A matrix is not invertible if its determinant is 0.
+
+C Program :
+
+
+#include<stdio.h>
+#include<stdlib.h>
+
+ int main()
+{
+	int a[3][3], i, j;
+	long determinant;
+	for(i = 0 ; i < 3; i++)
+		for(j = 0; j < 3; j++)
+			scanf("%d", &a[i][j]);
+	determinant = a[0][0] * ((a[1][1]*a[2][2]) - (a[2][1]*a[1][2])) -a[0][1] * (a[1][0]
+                * a[2][2] - a[2][0] * a[1][2]) + a[0][2] * (a[1][0] * a[2][1] - a[2][0] * a[1][1]);
+	if ( determinant == 0)
+	{
+		printf("The given matrix is not invertible");
+	}
+	else
+	{
+		printf("The given matrix is invertible");
+	}  
+	return 0;
+}
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+WEEK 10 : Programming Assignment 3
+-----------------------------------------------------------------------------------------------------------------------------
+
+Write a C program to sort a given 1D array using pointer in ascending order.
+
+C Program :
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int a[100],i, n;
+    scanf("%d",&n);  
+   
+    for (i=0; i<n; i++)
+    {
+        scanf("%d",a+i); 
+    }
+    int k,pk2;
+    for (i=0; i < (n-1); i++) 
+    {
+        for (k=i+1; k < n; k++)
+        {
+            if (*(a+i) > *(a+k))
+            {
+                pk2=*(a+i);
+                *(a+i)=*(a+k);
+                *(a+k)=pk2;
+            }
+        }
+    } 
+    for (i=0; i<n; i++)
+    {
+        printf("%d\n",*(a+i));
+    }
+    return 0;
+   }
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+WEEK 10 : Programming Assignment 4
+-----------------------------------------------------------------------------------------------------------------------------
+Write a C program to sort a 1D array using pointer by applying Bubble sort technique.
+
+
+
+C Program :
+
+#include<stdio.h>
+#include<stdlib.h>
+
+void sort(int *a, int n)
+{
+    int ipc,temp,j2;
+    for(ipc=1;ipc < n;ipc++)
+    {
+        for(j2=0;j2  < n-ipc;j2++)
+        {
+           if(*(a+j2) >= *(a+j2+1))
+        {
+            temp = *(a+j2);
+            *(a+j2)= *(a+j2+1);
+            *(a+j2+1)= temp;
+        }
+        }
+    }
+}
+int main()
+{
+    int a[20];
+    int n,i; 
+
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+
+    sort(a, n); 
+
+    for(i=0;i<n;i++)
+    {
+        printf("%d\n",a[i]);
+    }
+    return 0;
+}
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------
