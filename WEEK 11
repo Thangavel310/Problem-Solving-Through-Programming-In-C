@@ -1,0 +1,167 @@
+-----------------------------------------------------------------------------------------------------------------------------
+WEEK 11 : Programming Assignment 1
+-----------------------------------------------------------------------------------------------------------------------------
+
+Write a C program to find the velocity of the car at different time instants.
+
+
+C Program :
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int main() {
+    float t[100] = {10,15,18,22,30}, v[100] = {22,26,35,48,68};
+    float a,b, c, k = 0;; 
+    scanf("%f", & a); 
+    int isa, j;
+
+    for (isa = 0; isa < 5; isa++) {
+        b = 1;
+        c = 1;
+        for (j = 0; j < 5; j++) {
+            if (j != isa) {
+                b = b * (a - t[j]);
+                c = c * (t[isa] - t[j]);
+            }
+        }
+        k = k + ((b / c) * v[isa]);
+    }
+
+    printf("The respective value of the variable v is: %.2f", k);
+    return 0;
+}
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+WEEK 11 : Programming Assignment 2
+-----------------------------------------------------------------------------------------------------------------------------
+
+Write a C program to find the integral using the Trapezoidal rule with 10 segments between a and b.
+
+
+
+C Program :
+
+
+#include<stdio.h>
+#include<stdlib.h>
+
+float func(float x) 
+{
+    return x * x;
+}
+int main() 
+{
+    int n = 10; 
+    float a, b, integral; 
+    scanf("%f", & a); 
+    scanf("%f", & b); 
+
+    int id;
+    float h, x, sum = 0;
+    if (b > a)
+        h = (b - a) / n;
+    else
+        h = -(b - a) / n;
+    for (id = 1; id < n; id++) 
+    {
+        x = a + id * h;
+        sum = sum + func(x);
+    }
+    integral = (h / 2) * (func(a) + func(b) + 2 * sum);
+    printf("The integral is: %0.6f\n", integral);
+    return 0;
+}
+
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+WEEK 11 : Programming Assignment 3
+-----------------------------------------------------------------------------------------------------------------------------
+
+Write a C program to solve the differential equation using the Runge-Kutta method. Find y(x) for
+different values from the test cases.
+
+
+ 
+
+C Program :
+
+#include<stdio.h>
+#include<stdlib.h>
+
+float func(float x, float y) {
+    float m;
+    m = (x * (x + 1) - 3 * y * y * y) / 10;
+    return m;
+}
+
+int main() {
+    float m1, m2, m3, m4, m, h = 0.3;
+    float x0 = 0.3, y0 = 5, xn;
+    scanf("%f", & xn); 
+
+    while (x0 < xn) 
+    {
+        m1 = func(x0, y0);
+        m2 = func((x0 + h / 2.0), (y0 + m1 * h / 2));
+        m3 = func((x0 + h / 2.0), (y0 + m2 * h / 2));
+        m4 = func((x0 + h), (y0 + m3 * h));
+        m = ((m1 + 2 * m2 + 2 * m3 + m4) / 6);
+        y0 = y0 + m * h;
+        x0 = x0 + h;
+    }
+    printf("y=%.6f", y0);
+    return (0 + 0);
+}
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+WEEK 11 : Programming Assignment 4
+-----------------------------------------------------------------------------------------------------------------------------
+Write a C program to check whether the given input number is Prime number or not using recursion. 
+So, the input is an integer and output should print whether the integer is prime or not.
+
+
+
+
+
+C Program :
+
+#include <stdio.h>
+#include<stdlib.h>
+
+int checkPrime(int numBER, int i) {
+    if (i == 1) {
+        return 1;
+    } else {
+        if (numBER % i == 0) {
+            return 0;
+        } else {
+            return checkPrime(numBER, i - 1);
+        }
+    }
+}
+
+int main() {
+    int num, check;
+    scanf("%d", & num);
+    check = checkPrime(num, num / 2);
+    if (check == 1) {
+        printf("%d is a prime number\n", num);
+    } else {
+        printf("%d is not a prime number\n", num);
+    }
+    return 0;
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------
