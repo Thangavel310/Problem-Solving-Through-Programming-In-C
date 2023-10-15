@@ -1,0 +1,181 @@
+-----------------------------------------------------------------------------------------------------------------------------
+WEEK 12 : Programming Assignment 1
+-----------------------------------------------------------------------------------------------------------------------------
+
+Write a program in C to find the factorial of a given number using pointers.
+
+
+C Program :
+
+
+#include <stdio.h>
+
+void findFact(int num, long int * f) {
+  * f = 1;
+  while (num != 0) {
+    * f = * f * num;
+    num--;
+  }
+}
+
+int main() {
+  long int fact;
+  int num1;
+  scanf("%d", & num1);
+
+  findFact(num1, & fact);
+  printf("The Factorial of %d is : %ld\n", num1, fact);
+  return 0;
+}
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+WEEK 12 : Programming Assignment 2
+-----------------------------------------------------------------------------------------------------------------------------
+
+Write a C program to print the Record of the Student Merit wise. Here a structure variable is defined 
+which contains student rollno, name and score.
+
+
+C Program :
+
+
+#include<stdio.h>
+
+struct student 
+{
+  int rollno;
+  char name[20];
+  int score;
+};
+void main() 
+{
+  struct student s[20];
+  int i, n;
+
+  scanf("%d", & n); 
+  for (i = 0; i < n; i++) 
+  {
+    scanf("%d", & s[i].rollno);
+    scanf("%s", s[i].name);
+    scanf("%d", & s[i].score);
+  }
+  
+  struct student temp;
+  for (i = 0; i < n; i++) 
+  {
+    for (int j = 0; j < n; j++) 
+    {
+      if (s[i].score > s[j].score) 
+      {
+        temp = s[i];
+        s[i] = s[j];
+        s[j] = temp;
+      }
+    }
+  }
+  printf("The Merit List is :\n");
+  for (i = 0; i < n; i++) 
+  {
+    printf("%d", s[i].rollno);
+    printf("  %s", s[i].name);
+    printf("  %d\n", s[i].score);
+  }
+
+}
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+WEEK 12 : Programming Assignment 3
+-----------------------------------------------------------------------------------------------------------------------------
+
+Write a C program to store n elements using Dynamic Memory Allocation - calloc() and find the Largest 
+element
+
+
+
+C Program :
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() 
+{
+  int n;
+  float * element;
+
+  scanf("%d", & n);
+  float max = 0.0;
+  element = (float * ) calloc(n, sizeof(float));
+  if (element == NULL) 
+  {
+    printf("MEMORY  WAS  NOT  ALLOCATED");
+    return 0;
+  }
+  for (int i = 0; i < n; i++)
+    scanf("%f", element + i);
+
+  for (int i = 1; i < n; i++)
+    if ( * element < * (element + i))
+      *element = * (element + i);
+  printf("Largest element = %.2f", * element);
+  return 0;
+}
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+WEEK 12 : Programming Assignment 4
+-----------------------------------------------------------------------------------------------------------------------------
+Write a C program to find the sum of two 1D integer arrays ‘A’  and ‘B’ of same size and store the 
+result in another array ‘C’, where the size of the array and the elements of the array are taken as 
+input.
+
+
+
+C Program :
+
+
+#include<stdio.h>
+#include<stdlib.h>
+
+void main() 
+{
+  int i, n;
+  scanf("%d", & n);
+  int * A, * B, * c;
+  A = (int * ) malloc(n * sizeof(int));
+  B = (int * ) malloc(n * sizeof(int));
+  c = (int * ) malloc(n * sizeof(int));
+
+  for (int i = 0; i < n; i++)
+    scanf("%d", A + i);
+  for (int i = 0; i < n; i++) 
+  {
+    scanf("%d", B + i);
+    *(c + i) = * (A + i) + * (B + i);
+  }
+
+  printf("Result is\n");
+  for (i = 0; i < n; i++) 
+  {
+    printf("%d\n", *(c + i));
+  }
+
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
